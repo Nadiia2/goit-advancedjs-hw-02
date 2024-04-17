@@ -28,7 +28,7 @@ let countdownInterval;
 
 const startCountdown = () => {
   clearInterval(countdownInterval);
-  dateTimePicker.disabled = true; // Деактивуємо вибір дати та часу під час роботи таймеру
+  dateTimePicker.disabled = true;
 
   const selectedDate = new Date(dateTimePicker.value);
   const currentDate = new Date();
@@ -39,7 +39,7 @@ const startCountdown = () => {
       message: 'Please choose a date in the future',
       position: 'topCenter',
     });
-    dateTimePicker.disabled = false; // Активуємо вибір дати та часу, якщо виникла помилка
+    dateTimePicker.disabled = false;
     return;
   }
 
@@ -58,7 +58,7 @@ const startCountdown = () => {
         message: 'Countdown finished',
         position: 'topCenter',
       });
-      dateTimePicker.disabled = false; // Після завершення таймеру активуємо знову вибір дати та часу
+      dateTimePicker.disabled = false;
       dateTimePicker.value = '';
       startButton.disabled = false;
     } else {
