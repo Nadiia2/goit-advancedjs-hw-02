@@ -15,25 +15,26 @@ function submit(event) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (state === 'fulfilled') {
-          resolve(`✅ Fulfilled promise in ${delayInput}ms`);
+          resolve(delayInput);
+        } else {
+          reject(delayInput);
         }
-        reject(`❌ Rejected promise in ${delayInput}ms`);
       }, delayInput);
     });
   };
 
   makePromise()
-    .then(state => {
-      console.log(state);
+    .then(delay => {
+      console.log(`✅ Fulfilled promise in ${delay}ms`);
       iziToast.success({
-        message: `${state}`,
+        message: `✅ Fulfilled promise in ${delay}ms`,
         position: 'topCenter',
       });
     })
-    .catch(error => {
-      console.log(error);
+    .catch(delay => {
+      console.error(`❌ Rejected promise in ${delay}ms`);
       iziToast.error({
-        message: `${error}`,
+        message: `❌ Rejected promise in ${delay}ms`,
         position: 'topCenter',
       });
     });
