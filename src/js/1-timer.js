@@ -10,6 +10,8 @@ const hoursValue = document.querySelector('[data-hours]');
 const minutesValue = document.querySelector('[data-minutes]');
 const secondsValue = document.querySelector('[data-seconds]');
 
+startButton.disabled = true; // Зробити кнопку неактивною зі старту
+
 const convertMs = ms => {
   const second = 1000;
   const minute = second * 60;
@@ -60,7 +62,7 @@ const startCountdown = () => {
       });
       dateTimePicker.disabled = false;
       dateTimePicker.value = '';
-      startButton.disabled = false;
+      startButton.disabled = true; // Кнопка стає неактивною після завершення таймера
     } else {
       const { days, hours, minutes, seconds } = convertMs(timeDifference);
       daysValue.textContent = String(days).padStart(2, '0');
@@ -70,7 +72,7 @@ const startCountdown = () => {
     }
   }, 1000);
 
-  startButton.disabled = true;
+  startButton.disabled = true; // Кнопка стає неактивною під час роботи таймера
 };
 
 flatpickr(dateTimePicker, {
@@ -89,7 +91,7 @@ flatpickr(dateTimePicker, {
       });
       startButton.disabled = true;
     } else {
-      startButton.disabled = false;
+      startButton.disabled = false; // Кнопка активується, якщо вибрано коректну дату
     }
   },
 });
